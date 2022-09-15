@@ -1,0 +1,1 @@
+{"PumpkinTypeSpawn":"Pumpkin_Orange","Title":"Pumpkin Shooter!","VersionNumber":"0.9","GameSessionLenghtInSec":45}

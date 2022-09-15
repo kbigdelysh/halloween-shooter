@@ -1,0 +1,61 @@
+\hypertarget{_h_u_d_8cs_source}{}\doxysection{HUD.\+cs}
+\label{_h_u_d_8cs_source}\index{Assets/Scripts/UI/HUD.cs@{Assets/Scripts/UI/HUD.cs}}
+\mbox{\hyperlink{_h_u_d_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00001}00001 \textcolor{keyword}{using} System;}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00002}00002 \textcolor{keyword}{using} System.Collections;}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00003}00003 \textcolor{keyword}{using} System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00004}00004 \textcolor{keyword}{using} UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00005}00005 \textcolor{keyword}{using} UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00007}\mbox{\hyperlink{class_h_u_d}{00007}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_h_u_d}{HUD}} : MonoBehaviour \{}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00008}00008     [Header(\textcolor{stringliteral}{"{}Game Session Info"{}})]}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00009}00009     [SerializeField] \textcolor{keyword}{private} \mbox{\hyperlink{class_game_session}{GameSession}} \_gameSession = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00010}00010     [SerializeField] \textcolor{keyword}{private} Text \_scoreValue = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00011}00011     [SerializeField] \textcolor{keyword}{private} GameObject \_timeRemaining = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00012}00012     [SerializeField] \textcolor{keyword}{private} Text \_timeRemainingValue = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00013}00013     [Header(\textcolor{stringliteral}{"{}Game Over"{}})]}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00014}00014     [SerializeField] \textcolor{keyword}{private} GameObject \_gameOverScreen = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00015}00015     \textcolor{keyword}{private} \textcolor{keywordtype}{bool} \_sessionEnded;}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00016}00016     }
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00017}00017     \textcolor{comment}{// Start is called before the first frame update}}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00018}00018     \textcolor{keywordtype}{void} Start()}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00019}00019     \{}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00020}00020         \_gameSession.\mbox{\hyperlink{class_game_session_a41d00935ba88bc6bc3df9b0b59257c55}{OnSessionEnd}} += HandleSessionEnded;}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00021}00021         \_gameSession.\mbox{\hyperlink{class_game_session_abe2645ed28d88bc661891cbd7a0605d7}{OnSessionStart}} += HandleSessionStarted;}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00022}00022     \}}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00024}00024     \textcolor{keyword}{private} \textcolor{keywordtype}{void} HandleSessionStarted()}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00025}00025     \{}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00026}00026         \_sessionEnded = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00027}00027         \_timeRemaining.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00028}00028         \_gameOverScreen.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00029}00029         StartCoroutine(UpdateUI());}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00030}00030     \}}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00032}00032     IEnumerator UpdateUI()}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00033}00033     \{}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00034}00034         \textcolor{keywordflow}{while} (!\_sessionEnded)}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00035}00035         \{}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00036}00036             \_timeRemainingValue.text = GetFormattedTimeFromSeconds(\_gameSession.\mbox{\hyperlink{class_game_session_a91028585dac075754aa438b4d7e93e6a}{timeLeft}});}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00037}00037             \textcolor{comment}{// Update score value}}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00038}00038             \_scoreValue.text = \_gameSession.\mbox{\hyperlink{class_game_session_a931d367e67c256c2ccaa95e175ccac7d}{totalScore}}.ToString();}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00039}00039             yield \textcolor{keywordflow}{return} \textcolor{keyword}{new} WaitForSeconds(1); \textcolor{comment}{// wait 1 sec}}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00040}00040         \}}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00041}00041     \}}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00043}00043     \textcolor{keywordtype}{string} GetFormattedTimeFromSeconds( \textcolor{keywordtype}{float} seconds )}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00044}00044     \{}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00045}00045         \textcolor{keywordflow}{return} Mathf.FloorToInt( seconds / 60.0f ).ToString(\textcolor{stringliteral}{"{}0"{}}) + \textcolor{stringliteral}{"{}:"{}} + Mathf.FloorToInt( seconds \% 60.0f ).ToString(\textcolor{stringliteral}{"{}00"{}});}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00046}00046     \}}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00048}00048     \textcolor{keywordtype}{void} HandleSessionEnded()}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00049}00049     \{}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00050}00050         \_gameSession.\mbox{\hyperlink{class_game_session_a41d00935ba88bc6bc3df9b0b59257c55}{OnSessionEnd}} -\/= HandleSessionEnded;}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00051}00051         \_sessionEnded = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00052}00052         \_timeRemaining.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00053}00053         \_gameOverScreen.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00054}00054     \}}
+\DoxyCodeLine{\Hypertarget{_h_u_d_8cs_source_l00055}00055 \}}
+
+\end{DoxyCode}

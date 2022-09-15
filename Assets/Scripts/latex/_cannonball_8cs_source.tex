@@ -1,0 +1,26 @@
+\hypertarget{_cannonball_8cs_source}{}\doxysection{Cannonball.\+cs}
+\label{_cannonball_8cs_source}\index{Assets/Scripts/Gameplay/Cannonball.cs@{Assets/Scripts/Gameplay/Cannonball.cs}}
+\mbox{\hyperlink{_cannonball_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00001}00001 \textcolor{keyword}{using} System.Collections;}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00002}00002 \textcolor{keyword}{using} System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00003}00003 \textcolor{keyword}{using} UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00005}\mbox{\hyperlink{class_cannonball}{00005}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_cannonball}{Cannonball}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00007}00007     \textcolor{keyword}{private} \textcolor{keyword}{const} \textcolor{keywordtype}{int} DISAPPEAR\_WAIT = 5; \textcolor{comment}{// [sec]}}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00011}\mbox{\hyperlink{class_cannonball_a92904f0198c14fdfb95a483b036e6bd0}{00011}} \textcolor{comment}{}    \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cannonball_a92904f0198c14fdfb95a483b036e6bd0}{Disappear}}()}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00012}00012     \{        }
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00013}00013         gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00014}00014         \textcolor{comment}{// Remove rigid body component to reset velocity and other}}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00015}00015         \textcolor{comment}{// properties than can create physics issue later on when activated.}}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00016}00016         Destroy(GetComponent<Rigidbody>());}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00017}00017     \}}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00021}\mbox{\hyperlink{class_cannonball_a23a8717320835398a6ccf9300c3f166a}{00021}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_cannonball_a23a8717320835398a6ccf9300c3f166a}{InvokeDisappear}}()}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00022}00022     \{}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00023}00023         Invoke(nameof(\mbox{\hyperlink{class_cannonball_a92904f0198c14fdfb95a483b036e6bd0}{Disappear}}), DISAPPEAR\_WAIT);}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00024}00024     \}}
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_cannonball_8cs_source_l00026}00026 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,95 @@
+\hypertarget{_config_8cs_source}{}\doxysection{Config.\+cs}
+\label{_config_8cs_source}\index{Assets/Scripts/Data/Config.cs@{Assets/Scripts/Data/Config.cs}}
+\mbox{\hyperlink{_config_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00001}00001 \textcolor{keyword}{using} System;}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00002}00002 \textcolor{keyword}{using} System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00003}00003 \textcolor{keyword}{using} System.IO;}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00004}00004 \textcolor{keyword}{using} System.Linq;}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00005}00005 \textcolor{keyword}{using} System.Text;}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00006}00006 \textcolor{keyword}{using} System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00007}00007 \textcolor{keyword}{using} UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00009}\mbox{\hyperlink{namespace_assets}{00009}} \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_assets_1_1_data}{Assets.Data}}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00010}00010 \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00014}\mbox{\hyperlink{class_assets_1_1_data_1_1_config}{00014}}     \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_assets_1_1_data_1_1_config}{Config}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00015}00015     \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00016}\mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab7b8ac4aa3b777e75034a9d16dcbfb99}{00016}}         \textcolor{keyword}{public} \textcolor{keyword}{static} \mbox{\hyperlink{class_assets_1_1_data_1_1_config}{Config}} \mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab7b8ac4aa3b777e75034a9d16dcbfb99}{instance}} = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00017}00017         \textcolor{keyword}{private} \mbox{\hyperlink{class_assets_1_1_data_1_1_config_data}{ConfigData}} \_configData;}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00018}\mbox{\hyperlink{class_assets_1_1_data_1_1_config_a7b2fef982dfa73df8671a6957bc1a8e1}{00018}}         \textcolor{keyword}{public} \textcolor{keywordtype}{string} \mbox{\hyperlink{class_assets_1_1_data_1_1_config_a7b2fef982dfa73df8671a6957bc1a8e1}{configFileName}};}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00019}00019         \textcolor{keyword}{private} \textcolor{keywordtype}{string} \_configFileFullPath;}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00021}00021         \textcolor{keywordtype}{void} Awake()}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00022}00022         \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00023}00023             MakeSingleton();}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00025}00025             \_configFileFullPath = Path.Combine(Application.dataPath, \mbox{\hyperlink{class_assets_1_1_data_1_1_config_a7b2fef982dfa73df8671a6957bc1a8e1}{configFileName}});}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00027}00027             \mbox{\hyperlink{class_assets_1_1_data_1_1_config_a0c645ed6d8c156c5006a676d618ab273}{Load}}();}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00028}00028         \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00033}00033         \textcolor{keyword}{private} \textcolor{keywordtype}{void} MakeSingleton()}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00034}00034         \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00035}00035             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab7b8ac4aa3b777e75034a9d16dcbfb99}{instance}} == \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00036}00036                 \mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab7b8ac4aa3b777e75034a9d16dcbfb99}{instance}} = \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00037}00037             \textcolor{comment}{// If, mistakenly, this script is attached to another gameObject,}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00038}00038             \textcolor{comment}{// delete the gameObject (which consequently deletes this script instance).}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00039}00039             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab7b8ac4aa3b777e75034a9d16dcbfb99}{instance}} != \textcolor{keyword}{this})}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00040}00040                 Destroy(gameObject);}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00042}00042             DontDestroyOnLoad(gameObject);}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00043}00043         \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00048}\mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab786cd7fc5a6e5b0e63fbe5c0bb30ce6}{00048}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab786cd7fc5a6e5b0e63fbe5c0bb30ce6}{Save}}()}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00049}00049         \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00050}00050             \textcolor{keywordtype}{string} json = JsonUtility.ToJson(\_configData);}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00051}00051             \textcolor{comment}{// Write the json string to a text file.}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00052}00052             File.WriteAllText(\_configFileFullPath, json);}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00053}00053         \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00058}\mbox{\hyperlink{class_assets_1_1_data_1_1_config_a0c645ed6d8c156c5006a676d618ab273}{00058}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_assets_1_1_data_1_1_config_a0c645ed6d8c156c5006a676d618ab273}{Load}}()}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00059}00059         \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00060}00060             \textcolor{keywordflow}{if} (\_configData is \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00061}00061                 \_configData = \textcolor{keyword}{new} \mbox{\hyperlink{class_assets_1_1_data_1_1_config_data}{ConfigData}}();}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00062}00062             \textcolor{comment}{// Load the text file into json string. }}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00063}00063             \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00064}00064             \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00065}00065                 \textcolor{keywordtype}{string} jsonText = File.ReadAllText(\_configFileFullPath);}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00066}00066                 JsonUtility.FromJsonOverwrite(jsonText, \_configData);}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00067}00067             \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00068}00068             \textcolor{keywordflow}{catch} (IOException e)}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00069}00069             \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00070}00070                 Debug.Log(\textcolor{stringliteral}{"{}The config file does not exist."{}});}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00071}00071                 \mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab786cd7fc5a6e5b0e63fbe5c0bb30ce6}{Save}}();}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00072}00072                 Debug.Log(\textcolor{stringliteral}{"{}Created the config file"{}});}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00073}00073             \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00074}00074         \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00077}\mbox{\hyperlink{class_assets_1_1_data_1_1_config_a3d63208951f86affd6c33cb5b44318ce}{00077}}         \textcolor{keyword}{public} \textcolor{keywordtype}{string} \mbox{\hyperlink{class_assets_1_1_data_1_1_config_a3d63208951f86affd6c33cb5b44318ce}{GetTitle}}()}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00078}00078         \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00079}00079             \textcolor{keywordflow}{return} \_configData.\mbox{\hyperlink{class_assets_1_1_data_1_1_config_data_ad7baf113356e671a07ff78563ba27864}{Title}};}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00080}00080         \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00082}\mbox{\hyperlink{class_assets_1_1_data_1_1_config_afc3c0ec6db246936f767c32125837769}{00082}}         \textcolor{keyword}{public} \textcolor{keywordtype}{string} \mbox{\hyperlink{class_assets_1_1_data_1_1_config_afc3c0ec6db246936f767c32125837769}{GetVersionNumber}}()}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00083}00083         \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00084}00084             \textcolor{keywordflow}{return} \_configData.\mbox{\hyperlink{class_assets_1_1_data_1_1_config_data_afc41cb70f68ec3b540adc055d5e8201f}{VersionNumber}};}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00085}00085         \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00086}\mbox{\hyperlink{class_assets_1_1_data_1_1_config_a8b811fe20da0fcb95d434ceeac7c958e}{00086}}         \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_assets_1_1_data_1_1_config_a8b811fe20da0fcb95d434ceeac7c958e}{GetGameSessionLengthInSec}}()}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00087}00087         \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00088}00088             \textcolor{keywordflow}{return} \_configData.\mbox{\hyperlink{class_assets_1_1_data_1_1_config_data_a7e1d4f687696c9e401845377030c3cff}{GameSessionLenghtInSec}};}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00089}00089         \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00091}\mbox{\hyperlink{class_assets_1_1_data_1_1_config_a6b6a9afcaaf9b2aa412a52c9dd1dc53a}{00091}}         \textcolor{keyword}{public} \textcolor{keywordtype}{string} \mbox{\hyperlink{class_assets_1_1_data_1_1_config_a6b6a9afcaaf9b2aa412a52c9dd1dc53a}{GetPumpkinTypeSpawn}}()}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00092}00092         \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00093}00093             \textcolor{keywordflow}{return} \_configData.\mbox{\hyperlink{class_assets_1_1_data_1_1_config_data_a398d757e7dcbd9595ebac38427418bf9}{PumpkinTypeSpawn}};}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00094}00094         \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00096}00096         \textcolor{keywordtype}{void} OnApplicationQuit()}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00097}00097         \{}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00098}00098             \mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab786cd7fc5a6e5b0e63fbe5c0bb30ce6}{Save}}();}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00099}00099         \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00100}00100     \}}
+\DoxyCodeLine{\Hypertarget{_config_8cs_source_l00101}00101 \}}
+
+\end{DoxyCode}

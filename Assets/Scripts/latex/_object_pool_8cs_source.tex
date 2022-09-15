@@ -1,0 +1,51 @@
+\hypertarget{_object_pool_8cs_source}{}\doxysection{Object\+Pool.\+cs}
+\label{_object_pool_8cs_source}\index{Assets/Scripts/Gameplay/ObjectPool.cs@{Assets/Scripts/Gameplay/ObjectPool.cs}}
+\mbox{\hyperlink{_object_pool_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00001}00001 \textcolor{keyword}{using} System.Collections;}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00002}00002 \textcolor{keyword}{using} System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00003}00003 \textcolor{keyword}{using} UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00004}00004 \textcolor{comment}{// Ref: https://learn.unity.com/tutorial/introduction-\/to-\/object-\/pooling\#5ff8d015edbc2a002063971d}}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00005}\mbox{\hyperlink{class_object_pool}{00005}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_object_pool}{ObjectPool}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00007}\mbox{\hyperlink{class_object_pool_a45f8de7734c6b46cf5ff51208ca321b5}{00007}}     \textcolor{keyword}{public} \textcolor{keyword}{static} \mbox{\hyperlink{class_object_pool}{ObjectPool}} \mbox{\hyperlink{class_object_pool_a45f8de7734c6b46cf5ff51208ca321b5}{SharedInstance}};}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00008}\mbox{\hyperlink{class_object_pool_ae289ad4918a7594ecc58279db52a18ce}{00008}}     \textcolor{keyword}{public} List<GameObject> \mbox{\hyperlink{class_object_pool_ae289ad4918a7594ecc58279db52a18ce}{pooledObjects}};}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00009}\mbox{\hyperlink{class_object_pool_acc0350475fbe008dcc369cf4040c3989}{00009}}     \textcolor{keyword}{public} GameObject \mbox{\hyperlink{class_object_pool_acc0350475fbe008dcc369cf4040c3989}{objectToPool}};}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00010}\mbox{\hyperlink{class_object_pool_ac6840cd72d5e407ed4056c84fc4397e4}{00010}}     \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_object_pool_ac6840cd72d5e407ed4056c84fc4397e4}{amountToPool}};}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00012}00012     \textcolor{keyword}{private} \textcolor{keywordtype}{void} Awake()}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00013}00013     \{}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00014}00014         \mbox{\hyperlink{class_object_pool_a45f8de7734c6b46cf5ff51208ca321b5}{SharedInstance}} = \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00015}00015     \}}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00017}00017     \textcolor{keyword}{private} \textcolor{keywordtype}{void} Start()}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00018}00018     \{}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00019}00019         StartCoroutine(CreatePool());}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00020}00020     \}}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00025}00025     IEnumerator CreatePool()}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00026}00026     \{}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00027}00027         \mbox{\hyperlink{class_object_pool_ae289ad4918a7594ecc58279db52a18ce}{pooledObjects}} = \textcolor{keyword}{new} List<GameObject>();}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00028}00028         GameObject tmp;}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00029}00029         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{class_object_pool_ac6840cd72d5e407ed4056c84fc4397e4}{amountToPool}}; i++)}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00030}00030         \{}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00031}00031             tmp = Instantiate(\mbox{\hyperlink{class_object_pool_acc0350475fbe008dcc369cf4040c3989}{objectToPool}});}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00032}00032             tmp.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00033}00033             \mbox{\hyperlink{class_object_pool_ae289ad4918a7594ecc58279db52a18ce}{pooledObjects}}.Add(tmp);}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00034}00034             yield \textcolor{keywordflow}{return} \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00035}00035         \}}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00036}00036     \}}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00038}\mbox{\hyperlink{class_object_pool_ac66248bd144d14974e1be1704fca9434}{00038}}     \textcolor{keyword}{public} GameObject \mbox{\hyperlink{class_object_pool_ac66248bd144d14974e1be1704fca9434}{GetPooledObject}}()}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00039}00039     \{}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00040}00040         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{class_object_pool_ac6840cd72d5e407ed4056c84fc4397e4}{amountToPool}}; i++)}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00041}00041         \{}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00042}00042             \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_object_pool_ae289ad4918a7594ecc58279db52a18ce}{pooledObjects}}[i].activeInHierarchy)}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00043}00043             \{}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00044}00044                 \textcolor{keywordflow}{return} \mbox{\hyperlink{class_object_pool_ae289ad4918a7594ecc58279db52a18ce}{pooledObjects}}[i];}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00045}00045             \}}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00046}00046         \}}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00047}00047         \textcolor{keywordflow}{return} \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00048}00048     \}}
+\DoxyCodeLine{\Hypertarget{_object_pool_8cs_source_l00049}00049 \}}
+
+\end{DoxyCode}

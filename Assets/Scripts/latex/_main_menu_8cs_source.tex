@@ -1,0 +1,33 @@
+\hypertarget{_main_menu_8cs_source}{}\doxysection{Main\+Menu.\+cs}
+\label{_main_menu_8cs_source}\index{Assets/Scripts/UI/MainMenu.cs@{Assets/Scripts/UI/MainMenu.cs}}
+\mbox{\hyperlink{_main_menu_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00001}00001 \textcolor{keyword}{using} \mbox{\hyperlink{namespace_assets}{Assets}}.\mbox{\hyperlink{namespace_assets_1_1_data}{Data}};}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00002}00002 \textcolor{keyword}{using} System;}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00003}00003 \textcolor{keyword}{using} System.Collections;}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00004}00004 \textcolor{keyword}{using} System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00005}00005 \textcolor{keyword}{using} UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00006}00006 \textcolor{keyword}{using} UnityEngine.SceneManagement;}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00007}00007 \textcolor{keyword}{using} UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00009}\mbox{\hyperlink{class_main_menu}{00009}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_main_menu}{MainMenu}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00010}00010 \{}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00011}00011     [SerializeField] \textcolor{keyword}{private} Text \_highScore = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00012}00012     [SerializeField] \textcolor{keyword}{private} Text \_title;}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00013}00013     [SerializeField] \textcolor{keyword}{private} Text \_version;}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00014}00014     \textcolor{comment}{// Start is called before the first frame update}}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00015}00015     \textcolor{keywordtype}{void} Start()}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00016}00016     \{}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00017}00017         \_highScore.text = PlayerPrefs.HasKey(\textcolor{stringliteral}{"{}highScore"{}}) ? PlayerPrefs.GetInt(\textcolor{stringliteral}{"{}highScore"{}}).ToString() : 0.ToString();}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00018}00018         \_title.text = \mbox{\hyperlink{class_assets_1_1_data_1_1_config}{Config}}.\mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab7b8ac4aa3b777e75034a9d16dcbfb99}{instance}}.\mbox{\hyperlink{class_assets_1_1_data_1_1_config_a3d63208951f86affd6c33cb5b44318ce}{GetTitle}}();}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00019}00019         \_version.text = \mbox{\hyperlink{class_assets_1_1_data_1_1_config}{Config}}.\mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab7b8ac4aa3b777e75034a9d16dcbfb99}{instance}}.\mbox{\hyperlink{class_assets_1_1_data_1_1_config_afc3c0ec6db246936f767c32125837769}{GetVersionNumber}}();}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00020}00020     \}}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00023}\mbox{\hyperlink{class_main_menu_a0d1a158a2c0ea7daffaf2d7c3339a276}{00023}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_main_menu_a0d1a158a2c0ea7daffaf2d7c3339a276}{loadGame}}()}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00024}00024     \{}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00025}00025         SceneManager.LoadScene(\textcolor{stringliteral}{"{}GameScene"{}}, LoadSceneMode.Single);}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00026}00026     \}}
+\DoxyCodeLine{\Hypertarget{_main_menu_8cs_source_l00027}00027 \}}
+
+\end{DoxyCode}

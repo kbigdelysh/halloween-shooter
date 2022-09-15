@@ -1,0 +1,94 @@
+\hypertarget{_game_session_8cs_source}{}\doxysection{Game\+Session.\+cs}
+\label{_game_session_8cs_source}\index{Assets/Scripts/Gameplay/GameSession.cs@{Assets/Scripts/Gameplay/GameSession.cs}}
+\mbox{\hyperlink{_game_session_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00001}00001 \textcolor{keyword}{using} \mbox{\hyperlink{namespace_assets}{Assets}}.\mbox{\hyperlink{namespace_assets_1_1_data}{Data}};}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00002}00002 \textcolor{keyword}{using} System.Collections;}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00003}00003 \textcolor{keyword}{using} System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00004}00004 \textcolor{keyword}{using} UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00005}00005 \textcolor{keyword}{using} UnityEngine.SceneManagement;}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00007}\mbox{\hyperlink{class_game_session}{00007}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_game_session}{GameSession}} : MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00008}00008 \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00009}\mbox{\hyperlink{class_game_session_abe2645ed28d88bc661891cbd7a0605d7}{00009}}     \textcolor{keyword}{public} System.Action \mbox{\hyperlink{class_game_session_abe2645ed28d88bc661891cbd7a0605d7}{OnSessionStart}};}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00010}\mbox{\hyperlink{class_game_session_a41d00935ba88bc6bc3df9b0b59257c55}{00010}}     \textcolor{keyword}{public} System.Action \mbox{\hyperlink{class_game_session_a41d00935ba88bc6bc3df9b0b59257c55}{OnSessionEnd}};}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00011}00011     [HideInInspector]}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00012}\mbox{\hyperlink{class_game_session_a91028585dac075754aa438b4d7e93e6a}{00012}}     \textcolor{keyword}{public} \textcolor{keywordtype}{float} \mbox{\hyperlink{class_game_session_a91028585dac075754aa438b4d7e93e6a}{timeLeft}} = 0;}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00013}\mbox{\hyperlink{class_game_session_a931d367e67c256c2ccaa95e175ccac7d}{00013}}     \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_game_session_a931d367e67c256c2ccaa95e175ccac7d}{totalScore}} = 0; \textcolor{comment}{// current score obtained so far in the session.}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00015}\mbox{\hyperlink{class_game_session_a19dfe88217a5e2b14cac4853e37ebdef}{00015}}     \textcolor{keyword}{public} \textcolor{keyword}{enum} \mbox{\hyperlink{class_game_session_a19dfe88217a5e2b14cac4853e37ebdef}{SessionState}}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00016}00016     \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00017}00017         Paused,}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00018}00018         Active,}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00019}00019         Finished}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00020}00020     \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00022}00022     \textcolor{keyword}{private} \mbox{\hyperlink{class_game_session_a19dfe88217a5e2b14cac4853e37ebdef}{SessionState}} \_state = \mbox{\hyperlink{class_game_session_a19dfe88217a5e2b14cac4853e37ebdef}{SessionState}}.Paused;}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00024}00024     \textcolor{comment}{// Start is called before the first frame update}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00025}00025     \textcolor{keywordtype}{void} Start()}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00026}00026     \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00027}00027         StartSession();}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00028}00028     \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00030}00030     \textcolor{comment}{// Update is called once per frame}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00031}00031     \textcolor{keywordtype}{void} Update()}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00032}00032     \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00033}00033         \textcolor{keywordflow}{if} (\_state == \mbox{\hyperlink{class_game_session_a19dfe88217a5e2b14cac4853e37ebdef}{SessionState}}.Active)}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00034}00034         \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00035}00035             \mbox{\hyperlink{class_game_session_a91028585dac075754aa438b4d7e93e6a}{timeLeft}} -\/= Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00037}00037             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_game_session_a91028585dac075754aa438b4d7e93e6a}{timeLeft}} <= 0)}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00038}00038             \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00039}00039                 \mbox{\hyperlink{class_game_session_a91028585dac075754aa438b4d7e93e6a}{timeLeft}} = 0;}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00040}00040                 EndSession();}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00041}00041             \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00042}00042         \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00043}00043     \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00046}00046     \textcolor{keywordtype}{void} StartSession()}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00047}00047     \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00048}00048         \_state = \mbox{\hyperlink{class_game_session_a19dfe88217a5e2b14cac4853e37ebdef}{SessionState}}.Active;}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00049}00049         \mbox{\hyperlink{class_game_session_a91028585dac075754aa438b4d7e93e6a}{timeLeft}} = \mbox{\hyperlink{class_assets_1_1_data_1_1_config}{Config}}.\mbox{\hyperlink{class_assets_1_1_data_1_1_config_ab7b8ac4aa3b777e75034a9d16dcbfb99}{instance}}.\mbox{\hyperlink{class_assets_1_1_data_1_1_config_a8b811fe20da0fcb95d434ceeac7c958e}{GetGameSessionLengthInSec}}();}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00051}00051         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_game_session_abe2645ed28d88bc661891cbd7a0605d7}{OnSessionStart}} != \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00052}00052         \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00053}00053             \mbox{\hyperlink{class_game_session_abe2645ed28d88bc661891cbd7a0605d7}{OnSessionStart}}();}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00054}00054         \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00055}00055     \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00057}00057     \textcolor{keywordtype}{void} EndSession()}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00058}00058     \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00059}00059         UpdateHighScore();}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00061}00061         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_game_session_a41d00935ba88bc6bc3df9b0b59257c55}{OnSessionEnd}} != \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00062}00062         \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00063}00063             \mbox{\hyperlink{class_game_session_a41d00935ba88bc6bc3df9b0b59257c55}{OnSessionEnd}}();}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00064}00064         \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00065}00065     \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00069}00069     \textcolor{keyword}{private} \textcolor{keywordtype}{void} UpdateHighScore()}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00070}00070     \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00071}00071         \textcolor{comment}{// Update the high score in the player setting If the current session score is higher.}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00072}00072         \textcolor{keywordflow}{if} (!PlayerPrefs.HasKey(\textcolor{stringliteral}{"{}highScore"{}}))}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00073}00073             PlayerPrefs.SetInt(\textcolor{stringliteral}{"{}highScore"{}}, 0);}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00075}00075         \textcolor{keywordflow}{if} (PlayerPrefs.GetInt(\textcolor{stringliteral}{"{}highScore"{}}) < \mbox{\hyperlink{class_game_session_a931d367e67c256c2ccaa95e175ccac7d}{totalScore}})}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00076}00076         \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00077}00077             PlayerPrefs.SetInt(\textcolor{stringliteral}{"{}highScore"{}}, \mbox{\hyperlink{class_game_session_a931d367e67c256c2ccaa95e175ccac7d}{totalScore}});}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00078}00078             PlayerPrefs.Save();}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00079}00079         \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00080}00080     \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00082}\mbox{\hyperlink{class_game_session_a7a50e2ef8cbfb1e728e4b832ad21e7e3}{00082}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_session_a7a50e2ef8cbfb1e728e4b832ad21e7e3}{reload}}()}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00083}00083     \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00084}00084         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00085}00085     \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00087}\mbox{\hyperlink{class_game_session_ab9a61226c238ba5b5470606e3bd9fbe8}{00087}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_session_ab9a61226c238ba5b5470606e3bd9fbe8}{backToMenu}}()}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00088}00088     \{}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00089}00089         SceneManager.LoadScene(\textcolor{stringliteral}{"{}StartMenu"{}}, LoadSceneMode.Single);}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00090}00090     \}}
+\DoxyCodeLine{\Hypertarget{_game_session_8cs_source_l00091}00091 \}}
+
+\end{DoxyCode}
