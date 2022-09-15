@@ -11,7 +11,7 @@ This is a Tutorial Unity game project desinged to teach:
 
 Create a shooter game in which the player shoots a pumpkins with a cannon. The gameplay is timed and the player scores by shooting a pumpkin successfully. The following shows the scene you should recreate:
 
- ![](../../AppData/Local/Temp/SnagitTemp/Snag_86ee88a.png)
+ ![](GameScene.png)
 
 
 
@@ -29,7 +29,7 @@ these file(s). Create two classes to save/loade the json file:
   - Time left during gameplay (GameSessionLenghtInSec)
 
 - High score is tracked between sessions locally (Using PlayerPref)
-![](../../AppData/Local/Temp/SnagitTemp/Snag_8ae9080.png)
+![](StartMenu.png)
 
 Game Scene:
 
@@ -39,7 +39,7 @@ Game Scene:
 - There is no spawned object left in the scene past their usefulness (they either get destroyed or released back into the object pool.)
 - Game over screen buttons functions as expected:
 - 
-![](../../AppData/Local/Temp/SnagitTemp/Snag_87490e8.png)
+![](GameoverMenu.png)
 
 - **Polish Task**: Add looping game music. It should continue playing uninterrupted while the game scene loads, while the game is running and when the player transitions back to the menu. To acheive that, create a singleton class "MusicManager" and attached it to a gameObject that persist through different scenes.
 - **Optimizations**
